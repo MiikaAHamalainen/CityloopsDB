@@ -20,6 +20,8 @@ export const uploadFile = (req, res) => {
   var origname = file.originalname;
   var parentId = req.body.parentId;
   var fileDesc = req.body.fileDesc;
+  var fileDescNumeric = req.body.fileDescNumeric;
+
 
   console.log('File [' + origname + ']: filename: ' + file.filename + ', encoding: ' + file.encoding + ', mimetype: ' + file.mimetype + ', linking to parent: ' + parentId);
 
@@ -28,10 +30,12 @@ export const uploadFile = (req, res) => {
     if (err) {
       console.log("File upload failed: " + err);
     } else {
+      console.log(req.body.fileDescNumeric)
       console.log('Setting metadata for uploaded file: ' + file.originalname);
       dbfile.set('originalname', origname);
       dbfile.set('parentId', parentId);
       dbfile.set('fileDesc', fileDesc);
+      dbfile.set('fileDescNumeric', fileDescNumeric);
       dbfile.save((err, updatedfile) => {
         if (err) {
           console.log("err: " + err);
@@ -102,6 +106,8 @@ export const updateParentObject = (obj, file, res) => {
 export const updateFile = (req, res) => {
   GFS.findOne({ '_id': req.body.id }, function (err, dbfile) {
     dbfile.set('fileDesc', req.body.fileDesc);
+    dbfile.set('fileDescNumeric', req.body.fileDescNumeric);
+
     dbfile.save((err, fileToEdit) => {
       if (err) {
         console.log("err: " + err);

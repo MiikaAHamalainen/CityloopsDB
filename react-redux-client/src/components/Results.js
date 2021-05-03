@@ -79,6 +79,7 @@ export default class Results extends React.Component {
     if (file !== "") {
       const data = new FormData();
       data.append('fileDesc', fileForm.fileDesc.value);
+      data.append('fileDescNumeric', fileForm.fileDescNumeric.value);
       data.append('file', file);
       data.append('filename', file.name);
       data.append('parentId', fileForm.parentId.value);
@@ -98,6 +99,8 @@ export default class Results extends React.Component {
     if (file !== "") {
       const data = new FormData();
       data.append('fileDesc', fileForm.fileDesc.value);
+      data.append('fileDescNumeric', fileForm.fileDescNumeric.value);
+
       data.append('id', fileForm.id.value);
       this.props.mappedFileEdit(data);
     }
@@ -149,10 +152,10 @@ export default class Results extends React.Component {
     if (addResultForm.parentId.value !== "") {
       const data = new FormData();
       data.append('parentId', addResultForm.parentId.value);
-      data.append('usedMetrics', addResultForm.usedMetrics.value);
       data.append('measurementMetrics', addResultForm.measurementMetrics.value);
       data.append('weather', addResultForm.weather.value);
       data.append('resultDetails', addResultForm.resultDetails.value);
+      data.append('reportResults', addResultForm.reportResults.value);
       data.append('resultdate', addResultForm.resultdate.value);
       this.props.mappedAddResultForCalcPoint(data);
     }
@@ -164,14 +167,14 @@ export default class Results extends React.Component {
   submitEditResult(e) {
     e.preventDefault();
     const editForm = document.getElementById('ResultEditForm');
-    if (editForm.usedMetrics.value !== "") {
+    if (editForm.resultdate.value !== "") {
       const data = new FormData();
       data.append('id', editForm.id.value);
-      data.append('usedMetrics', editForm.usedMetrics.value);
       data.append('resultdate', editForm.resultdate.value);
       data.append('measurementMetrics', editForm.measurementMetrics.value);
       data.append('weather', editForm.weather.value);
       data.append('resultDetails', editForm.resultDetails.value);
+      data.append('reportResults', editForm.reportResults.value);
       this.props.mappedEditResult(data);
     }
     else {
@@ -207,9 +210,9 @@ export default class Results extends React.Component {
              {buildingState.building &&
               <Link to ={`/${buildingState.building._id}`}>Takaisin rakennuksen tietoihin</Link>
              }
-            <h4>Mittauspaikan <b>{buildingState.calcPoint.shortDesc}</b> tulokset:</h4>
+            <h4>Materiaalerän <b>{buildingState.calcPoint.shortDesc}</b> materiaalit:</h4>
             <hr />
-            <p><Button type="button" className="btn btn-primary" bsStyle="success" onClick={this.showAddResultModal} bsSize="small"><Glyphicon glyph="plus" />Lisää uusi mittaustulos</Button></p>
+            <p><Button type="button" className="btn btn-primary" bsStyle="success" onClick={this.showAddResultModal} bsSize="small"><Glyphicon glyph="plus" />Lisää uusi materiaali</Button></p>
 
             {!results && buildingState.isFetching &&
               <p>Ladataan tietoa rakennuksista....</p>
@@ -220,18 +223,18 @@ export default class Results extends React.Component {
             {results && results.length > 0 && !buildingState.isFetching &&
               <table className="table vocTable">
                 <thead>
-                  <tr><th>Mittauksen ajankohta</th>
-                    <th>Sää</th>
-                    <th>Tulokset</th>
-                    <th>Käytetty mittalaite</th>
+                  <tr><th>Ajankohta</th>
+                    <th>Säätila</th>
+                    <th>Menetelmä</th>
+                    <th>Raportin tulokset</th>
                     <th>Lisätiedot</th>
+                    <th className="textCenter">Tiedostot</th>
                     {canEdit &&
                       <th className="textCenter">Muokkaa</th>
                     }
                     {canEdit &&
                       <th className="textCenter">Poista kohde</th>
                     }
-                    <th className="textCenter">Tiedostot</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -239,14 +242,9 @@ export default class Results extends React.Component {
                     <td className="textCenter">{result.resultdate && new Date(result.resultdate).toLocaleDateString('fi-FI')}</td>
                     <td>{result.weather}</td>
                     <td>{getLabelFor('measurementMetrics', result.measurementMetrics)}</td>
-                    <td>{getLabelFor('usedMetrics', result.usedMetrics)}</td>
+                    <td>{result.reportResults}</td>
                     <td>{result.resultDetails}</td>
-                    {canEdit &&
-                      <td className="textCenter"><Button onClick={() => this.showEditResultModal(result)} bsStyle="info" bsSize="xsmall"><Glyphicon glyph="edit" /></Button></td>
-                    }
-                    {canEdit &&
-                      <td className="textCenter"><Button onClick={() => this.showDeleteResultModal(result)} bsStyle="danger" bsSize="xsmall"><Glyphicon glyph="trash" /></Button></td>
-                    }
+
 
                     <td className="textCenter">
                       {canEdit &&
@@ -268,6 +266,12 @@ export default class Results extends React.Component {
                         </span>
                       )}
                     </td>
+                    {canEdit &&
+                      <td className="textCenter"><Button onClick={() => this.showEditResultModal(result)} bsStyle="info" bsSize="xsmall"><Glyphicon glyph="edit" /></Button></td>
+                    }
+                    {canEdit &&
+                      <td className="textCenter"><Button onClick={() => this.showDeleteResultModal(result)} bsStyle="danger" bsSize="xsmall"><Glyphicon glyph="trash" /></Button></td>
+                    }
                   </tr>)
                   }
                 </tbody>
@@ -285,7 +289,7 @@ export default class Results extends React.Component {
         >
 
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Lisää uusi mittaustulos</Modal.Title>
+            <Modal.Title id="contained-modal-title">Lisää uusi materiaali</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="col-md-12">
@@ -324,7 +328,7 @@ export default class Results extends React.Component {
         >
 
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Muokkaa mittaustulosta</Modal.Title>
+            <Modal.Title id="contained-modal-title">Muokkaa materiaalia</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div className="col-md-12">
@@ -345,7 +349,7 @@ export default class Results extends React.Component {
               }
               {resultToEdit && buildingState.successMsg &&
                 <Alert bsStyle="success">
-                  <strong>Mittaustulos </strong>{buildingState.successMsg}
+                  <strong>Materiaali </strong>{buildingState.successMsg}
                 </Alert>
               }
             </div>
@@ -363,12 +367,12 @@ export default class Results extends React.Component {
           aria-labelledby="contained-modal-title"
         >
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title">Poista mittaustulos</Modal.Title>
+            <Modal.Title id="contained-modal-title">Poista materiaali</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {buildingState.resultToDelete && !buildingState.error && !buildingState.isFetching &&
               <Alert bsStyle="warning">
-                Oletko varma, että haluat poistaa mittaustuloksen?
+                Oletko varma, että haluat poistaa materiaalin?
               </Alert>
             }
             {buildingState.resultToDelete && buildingState.error &&
@@ -385,7 +389,7 @@ export default class Results extends React.Component {
 
             {!buildingState.resultToDelete && !buildingState.error && !buildingState.isFetching &&
               <Alert bsStyle="success">
-                Mittaustulos <strong>{buildingState.successMsg} </strong>
+                Materiaali <strong>{buildingState.successMsg} </strong>
               </Alert>
             }
           </Modal.Body>
@@ -437,7 +441,7 @@ export default class Results extends React.Component {
               }
               {buildingState.successMsg &&
                 <Alert bsStyle="success">
-                  {buildingState.successMsg} mittauspaikalle.
+                  {buildingState.successMsg} materiaalille.
               </Alert>
               }
             </div>
@@ -475,7 +479,7 @@ export default class Results extends React.Component {
               }
               {buildingState.successMsg &&
                 <Alert bsStyle="success">
-                  {buildingState.successMsg} mittauspaikalle.
+                  {buildingState.successMsg} materiaalille.
               </Alert>
               }
             </div>

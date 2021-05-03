@@ -55,6 +55,15 @@ const BuildingForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
+            <ControlLabel>Rakennustunnus: </ControlLabel>
+            <FormControl
+              type="text" placeholder="Rakennustunnus"
+              name="buildingIdentifier"
+            />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
             <ControlLabel>Rakennuksen käyttötarkoitus: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="buildingType">
               {
@@ -67,14 +76,35 @@ const BuildingForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Rakennuksen runkorakenne: </ControlLabel>
+            <ControlLabel>Perustustapa: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="buildingFoundation">
+              {
+                getTypesFor('buildingFoundation')
+              };
+            </FormControl>
+            {/* {buildings.map((building,i) => <tr key={i}>} */}
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kantava runko: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="buildingMaterial">
               {
                 getTypesFor('buildingMaterial')
               };
             </FormControl>
             {/* {buildings.map((building,i) => <tr key={i}>} */}
-
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Pääasiallinen ulkoseinärakenne: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="buildingOuterWall">
+              {
+                getTypesFor('buildingOuterWall')
+              };
+            </FormControl>
+            {/* {buildings.map((building,i) => <tr key={i}>} */}
           </FormGroup>
         </div>
         <div className="col-md-12">
@@ -89,30 +119,10 @@ const BuildingForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Rakennuksen lämmitysmuoto: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="buildingWarmingSystem">
-              {
-                getTypesFor('buildingWarmingSystem')
-              };
-            </FormControl>
-          </FormGroup>
-        </div>
-        <div className="col-md-12">
-          <FormGroup>
             <ControlLabel>Rakennuksen kerrosluku: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="buildingFloorsNumber">
               {
                 getTypesFor('buildingFloorsNumber')
-              };
-            </FormControl>
-          </FormGroup>
-        </div>
-        <div className="col-md-12">
-          <FormGroup>
-            <ControlLabel>Rakennuksen alapohjarakenne: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="buildingFloorBase">
-              {
-                getTypesFor('buildingFloorBase')
               };
             </FormControl>
           </FormGroup>

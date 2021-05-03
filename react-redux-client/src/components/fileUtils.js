@@ -8,6 +8,7 @@
   if (file !== "") {
     const data = new FormData();
     data.append('fileDesc', fileForm.fileDesc.value);
+    data.append('fileDescNumeric', fileForm.fileDescNumeric.value);
     data.append('file', file);
     data.append('filename', file.name);
     data.append('parentId', fileForm.parentId.value);
@@ -28,6 +29,8 @@ export const fileEdit = (e) => {
   if (file !== "") {
     const data = new FormData();
     data.append('fileDesc', fileForm.fileDesc.value);
+    data.append('fileDescNumeric', fileForm.fileDescNumeric.value);
+
     this.props.mappedFileUpload(data);
   }
   else {

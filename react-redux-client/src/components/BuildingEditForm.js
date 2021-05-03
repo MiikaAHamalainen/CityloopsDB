@@ -54,6 +54,15 @@ const BuildingEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
+            <ControlLabel>Rakennustunnus: </ControlLabel>
+            <FormControl
+              type="text" placeholder="Rakennustunnus"
+              name="buildingIdentifier" defaultValue={props.buildingData.buildingIdentifier}
+            />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
             <ControlLabel>Rakennuksen käyttötarkoitus: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="buildingType" defaultValue={props.buildingData.buildingType}>
               {
@@ -64,14 +73,35 @@ const BuildingEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Rakennuksen runkorakenne: </ControlLabel>
+            <ControlLabel>Perustustapa: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="buildingFoundation" defaultValue={props.buildingData.buildingFoundation}>
+              {
+                getTypesFor('buildingFoundation')
+              };
+            </FormControl>
+            {/* {buildings.map((building,i) => <tr key={i}>} */}
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kantava runko: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="buildingMaterial" defaultValue={props.buildingData.buildingMaterial}>
               {
                 getTypesFor('buildingMaterial')
               };
             </FormControl>
             {/* {buildings.map((building,i) => <tr key={i}>} */}
-
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Pääasiallinen ulkoseinärakenne: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="buildingOuterWall" defaultValue={props.buildingData.buildingOuterWall}>
+              {
+                getTypesFor('buildingOuterWall')
+              };
+            </FormControl>
+            {/* {buildings.map((building,i) => <tr key={i}>} */}
           </FormGroup>
         </div>
         <div className="col-md-12">
@@ -86,30 +116,10 @@ const BuildingEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Rakennuksen lämmitysmuoto: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="buildingWarmingSystem" defaultValue={props.buildingData.buildingWarmingSystem}>
-              {
-                getTypesFor('buildingWarmingSystem')
-              };
-            </FormControl>
-          </FormGroup>
-        </div>
-        <div className="col-md-12">
-          <FormGroup>
             <ControlLabel>Rakennuksen kerrosluku: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="buildingFloorsNumber" defaultValue={props.buildingData.buildingFloorsNumber}>
               {
                 getTypesFor('buildingFloorsNumber')
-              };
-            </FormControl>
-          </FormGroup>
-        </div>
-        <div className="col-md-12">
-          <FormGroup>
-            <ControlLabel>Rakennuksen alapohjarakenne: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="buildingFloorBase" defaultValue={props.buildingData.buildingFloorBase}>
-              {
-                getTypesFor('buildingFloorBase')
               };
             </FormControl>
           </FormGroup>

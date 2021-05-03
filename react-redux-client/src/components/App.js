@@ -44,11 +44,12 @@ export default class App extends React.Component {
       data.append('buildingCounty', form.buildingCounty.value);
       data.append('buildingOwner', form.buildingOwner.value);
       data.append('buildingYear', form.buildingYear.value);
+      data.append('buildingIdentifier', form.buildingIdentifier.value);
       data.append('buildingType', form.buildingType.value);
+      data.append('buildingFoundation', form.buildingFoundation.value);
       data.append('buildingMaterial', form.buildingMaterial.value);
-      data.append('buildingFloorBase', form.buildingFloorBase.value);
+      data.append('buildingOuterWall', form.buildingOuterWall.value);
       data.append('buildingRoof', form.buildingRoof.value);
-      data.append('buildingWarmingSystem', form.buildingWarmingSystem.value);
       data.append('buildingFloorsNumber', form.buildingFloorsNumber.value);
       data.append('buildingDesc', form.buildingDesc.value);
       data.append('dataOwner', form.dataOwner.value);
@@ -70,7 +71,7 @@ export default class App extends React.Component {
             <Navbar.Header>
                 <Nav>
                 <LinkContainer to="/">
-                  <NavItem>VOC Online</NavItem>
+                  <NavItem>CityloopsDB</NavItem>
                 </LinkContainer>
                 </Nav>
             </Navbar.Header>
@@ -104,27 +105,20 @@ export default class App extends React.Component {
         <Jumbotron bsClass="footer">
           <Grid>
             <Row>
-              <Col xs={4} md={2}>
-                <Image src="images/eu.png" responsive />
+            <Col xs={2} md={2}>
+                <Image src="images/cityloops.png" responsive />
               </Col>
-              <Col xs={4} md={2}>
-                <Image src="images/vipuvoimaa.png" responsive />
+              <Col xs={2} md={2}>
+                <Image src="images/flag_yellow_high.jpg" responsive />
               </Col>
-              <Col xs={4} md={2}>
-                <Image src="images/ely.png" responsive />
+              <Col xs={4} md={3}>
+                <p>This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 821033.</p>
               </Col>
-              <Col xs={4} md={2}>
-                <Image src="images/esp.png" responsive />
-              </Col>
-              <Col xs={4} md={2}>
-                <Image src="images/jsp.png" responsive />
-              </Col>
-         
-              <Col xs={4} md={2}>
-                <Image src="images/xamk.png" responsive />
+              <Col xs={4} md={5}>
+                <p><b>Disclaimer:</b> The sole responsibility for any error or omissions lies with the editor. The conter does not necessarily reflect the opinion of the European Commission. The European Commission is also not responsible for any use that may be made of the information contained herein.</p>
               </Col>
             </Row>
-          </Grid>;
+          </Grid>
         </Jumbotron>
         </div>
     );

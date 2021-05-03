@@ -49,10 +49,22 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Kivi' value='Kivi'>Kivi</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
-    else if (paramType === 'buildingFloorBase') {
-      items.push((<option key='Rossipohja' value='Rossipohja'>Rossipohja</option>));
-      items.push((<option key='Maavarainenlattia' value='Maavarainenlattia'>Maavarainen lattia</option>));
-      items.push((<option key='Kellarikerros' value='Kellarikerros'>Kellarikerros</option>));
+    else if ( paramType === 'buildingOuterWall' ) {
+      items.push((<option key='Betoni' value='Betoni'>Betoni</option>));
+      items.push((<option key='Tiili' value='Tiili'>Tiili</option>));
+      items.push((<option key='Massiivihirsi' value='Massiivihirsi'>Massiivihirsi</option>));
+      items.push((<option key='Puurunkotiiliverhous' value='Puurunkotiiliverhous'>Puurunko + tiiliverhous</option>));
+      items.push((<option key='Puurunkopuuverhous' value='Puurunkopuuverhous'>Puurunko + puuverhous</option>));
+      items.push((<option key='Kivi' value='Kivi'>Kivi</option>));
+      items.push((<option key='Muu' value='Muu'>Muu</option>));
+    }
+    else if ( paramType === 'lotVolumeWeightUnit' ) {
+      items.push((<option key='Kg' value='Kg'>Kg</option>));
+      items.push((<option key='m³' value='m³'>m³</option>));
+    }
+    else if ( paramType === 'buildingFoundation' ) {
+      items.push((<option key='Betoni' value='Betoni'>Betoni</option>));
+      items.push((<option key='Tiili' value='Tiili'>Tiili</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'buildingRoof') {
@@ -60,14 +72,6 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Harjakatto' value='Harjakatto'>Harjakatto</option>));
       items.push((<option key='Pulpettikatto' value='Pulpettikatto'>Pulpettikatto</option>));
       items.push((<option key='Mansardi' value='Mansardi'>Mansardi</option>));
-      items.push((<option key='Muu' value='Muu'>Muu</option>));
-    }
-    else if (paramType === 'buildingWarmingSystem') {
-      items.push((<option key='Kaukolampo' value='Kaukolampo'>Kaukolampö</option>));
-      items.push((<option key='Oljylammitys' value='Oljylammitys'>Öljylämmitys</option>));
-      items.push((<option key='Sahkolammitys' value='Sahkolammitys'>Sähkölämmitys</option>));
-      items.push((<option key='Lampopumput' value='Lampopumput'>Lämpöpumput</option>));
-      items.push((<option key='Maalampo' value='Maalampo'>Maalämpö</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'buildingFloorsNumber') {
@@ -81,6 +85,14 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='8' value='8'>8</option>));
       items.push((<option key='9' value='9'>9</option>));
       items.push((<option key='10' value='10'>10</option>));
+    }
+    else if (paramType === 'lotCategory') {
+      items.push((<option key='Kasa' value='Kasa'>Kasa</option>));
+      items.push((<option key='Irrotettava' value='Irrotettava'>Irrotettava</option>));
+    }
+    else if (paramType === 'lotReady') {
+      items.push((<option key='Ei' value={false} >Ei</option>));
+      items.push((<option key='Kyllä' value={true}>Kyllä</option>));
     }
     else if (paramType === 'cpFloorNumber') {
       items.push((<option key='1' value='1'>1</option>));
@@ -118,24 +130,6 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Lastulevy' value='Lastulevy'>Lastulevy</option>));
       items.push((<option key='Puu' value='Puu'>Puu</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
-
-    }
-    else if (paramType === 'cpVentilation') {
-      items.push((<option key='Painovoimainen' value='Painovoimainen'>Painovoimainen</option>));
-      items.push((<option key='Koneellinenpoisto' value='Koneellinenpoisto'>Koneellinen poisto</option>));
-      items.push((<option key='Koneellinentulojapoisto' value='Koneellinentulojapoisto'>Koneellinen tulo ja poisto</option>));
-      items.push((<option key='Jaahdytys' value='Jaahdytys'>Jäähdytys</option>));
-    }
-    else if (paramType === 'usedMetrics') {
-      items.push((<option key='Andersen' value='Andersen'>Andersen</option>));
-      items.push((<option key='TSIAirflowJaPID' value='TSIAirflowJaPID'>TSI Airflow ja PID</option>));
-      items.push((<option key='GCIMS' value='GCIMS'>GC-IMS</option>));
-      items.push((<option key='GDUMultisens' value='GDUMultisens'>GDU Multisens</option>));
-      items.push((<option key='Wainu' value='Wainu'>Wainu</option>));
-      items.push((<option key='TSIDusttrak' value='TSIDusttrak'>TSI Dusttrak</option>));
-      items.push((<option key='TrotecBZ30' value='TrotecBZ30'>Trotec BZ30</option>));
-      items.push((<option key='ISO16000-6' value='ISO16000-6'>Standardi ISO 16000-6 (VOC-analyysi)</option>));
-
     }
     else if (paramType === 'measurementMetrics') {
       items.push((<option key='Tvoc' value='Tvoc'>TVOC</option>));

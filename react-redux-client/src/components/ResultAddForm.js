@@ -6,13 +6,12 @@ var DatePicker = require("react-16-bootstrap-date-picker");
 const ResultAddForm = (props) => {
   return (
     <form className="form form-horizontal" id="ResultAddForm" onSubmit={props.addResult}>
-      <div className="row">
-        <h3 className="centerAlign">Lisää mittaustulos mittauspaikalle</h3>
+        <h3 className="centerAlign">Lisää materiaali materiaalierään</h3>
         <input type="hidden" value={props.calcPointId} name="parentId" />
 
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Mittauksen ajankohta: </ControlLabel>
+            <ControlLabel>Ajankohta: </ControlLabel>
             <DatePicker id="resultdate" name="resultdate" value={props.addedResult && props.addedResult.resultdate} />
           </FormGroup>
         </div>
@@ -27,7 +26,7 @@ const ResultAddForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tulokset: </ControlLabel>
+            <ControlLabel>Menetelmä: </ControlLabel>
             <FormControl componentClass="select" placeholder="Valitse" name="measurementMetrics">
               {
                 getTypesFor('measurementMetrics')
@@ -37,15 +36,13 @@ const ResultAddForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Käytetyt mittalaitteet/menetelmät: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="usedMetrics">
-              {
-                getTypesFor('usedMetrics')
-              };
-            </FormControl>
+            <ControlLabel>Raportin tulokset: </ControlLabel>
+            <FormControl
+              type="text" placeholder="Raportin tulokset"
+              name="reportResults"
+            />
           </FormGroup>
         </div>
-      </div>
       <div className="col-md-12">
           <FormGroup>
             <ControlLabel>Lisätiedot: </ControlLabel>

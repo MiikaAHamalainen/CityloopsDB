@@ -6,14 +6,52 @@ const CalcPointAddForm = (props) => {
   return (
     <form className="form form-horizontal" id="CalcPointAddForm" onSubmit={props.addCalcPoint}>
       <div className="row">
-        <h3 className="centerAlign">Lisää mittauspaikka rakennukselle</h3>
+        <h3 className="centerAlign">Lisää materiaalierä</h3>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tilan nimi / numero: </ControlLabel>
+            <ControlLabel>Erän nimi / numero: </ControlLabel>
             <FormControl
-              type="text" placeholder="Tilan nimi / numero"
+              type="text" placeholder="Erän nimi / numero"
               name="shortDesc"
             />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kasa / irrotettava: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="lotCategory">
+              {
+                getTypesFor('lotCategory')
+              };            
+            </FormControl>
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kappalemäärä: </ControlLabel>
+            <FormControl
+              type="number" placeholder="Kappalemäärä"
+              name="lotQuantity"
+            />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Tilavuus/Paino: </ControlLabel>
+            <FormControl
+              type="number" placeholder="Tilavuus/Paino"
+              name="lotVolumeWeight"
+            />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Tilavus/Paino yksikkö: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="lotVolumeWeightUnit">
+              {
+                getTypesFor('lotVolumeWeightUnit')
+              };            
+            </FormControl>
           </FormGroup>
         </div>
         <div className="col-md-12">
@@ -57,21 +95,21 @@ const CalcPointAddForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Ilmanvaihto: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="cpVentilation">
-              {
-                getTypesFor('cpVentilation')
-              };            
-            </FormControl>
-          </FormGroup>
-        </div>
-        <div className="col-md-12">
-          <FormGroup>
             <ControlLabel>Lisätiedot: </ControlLabel>
             <FormControl
               componentClass="textarea" placeholder="Lisätiedot"
               name="longDesc"
             />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Erä valmis myytäväksi: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="lotReady">
+              {
+                getTypesFor('lotReady')
+              };            
+            </FormControl>
           </FormGroup>
         </div>
       </div>

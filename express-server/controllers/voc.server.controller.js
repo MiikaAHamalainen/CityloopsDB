@@ -68,7 +68,7 @@ export const addNewCalcPoint = (req, res) => {
         console.log("err: " + err);
         return res.json({ 'success': false, 'message': 'Virhe' });
       }
-      return res.json({ 'success': true, 'message': 'Mittauspaikka lisätty onnistuneesti', newCalcPoint });
+      return res.json({ 'success': true, 'message': 'Materiaali lisätty onnistuneesti', newCalcPoint });
     });
   });
 }
@@ -95,8 +95,8 @@ export const deleteCalcPoint = (req, res) => {
     if (err) {
       return res.json({ 'success': false, 'message': 'Virhe' });
     }
-    console.log("Deletion succesful of mittauspaikka ID: " + req.params.id);
-    return res.json({ 'success': true, 'message': 'Mittauspaikka poistettu onnistuneesti.' });
+    console.log("Deletion succesful of material ID: " + req.params.id);
+    return res.json({ 'success': true, 'message': 'Materiaali poistettu onnistuneesti.' });
   })
 }
 

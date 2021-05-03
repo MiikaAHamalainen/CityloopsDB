@@ -44,14 +44,18 @@ export default class Building extends React.Component {
     e.preventDefault();
     const editForm = document.getElementById('CalcPointAddForm');
     if (editForm.shortDesc.value !== "") {
-
+      
       const data = new FormData();
       data.append('shortDesc', editForm.shortDesc.value);
+      data.append('lotCategory', editForm.lotCategory.value);
+      data.append('lotQuantity', editForm.lotQuantity.value);
+      data.append('lotVolumeWeight', editForm.lotVolumeWeight.value);
+      data.append('lotVolumeWeightUnit', editForm.lotVolumeWeightUnit.value);
       data.append('cpFloorNumber', editForm.cpFloorNumber.value);
       data.append('cpFloorMaterial', editForm.cpFloorMaterial.value);
       data.append('cpRoofMaterial', editForm.cpRoofMaterial.value);
       data.append('cpCeilingMaterial', editForm.cpCeilingMaterial.value);
-      data.append('cpVentilation', editForm.cpVentilation.value);
+      data.append('lotReady', editForm.lotReady.value);
       data.append('longDesc', editForm.longDesc.value);
       data.append('parent', this.props.params.id);
       this.props.mappedAddCalcPoint(data);
@@ -77,11 +81,15 @@ export default class Building extends React.Component {
       const data = new FormData();
       data.append('id', cpEditForm.id.value);
       data.append('shortDesc', cpEditForm.shortDesc.value);
+      data.append('lotCategory', cpEditForm.lotCategory.value);
+      data.append('lotQuantity', cpEditForm.lotQuantity.value);
+      data.append('lotVolumeWeight', cpEditForm.lotVolumeWeight.value);
+      data.append('lotVolumeWeightUnit', cpEditForm.lotVolumeWeightUnit.value);
       data.append('cpFloorNumber', cpEditForm.cpFloorNumber.value);
       data.append('cpFloorMaterial', cpEditForm.cpFloorMaterial.value);
       data.append('cpRoofMaterial', cpEditForm.cpRoofMaterial.value);
       data.append('cpCeilingMaterial', cpEditForm.cpCeilingMaterial.value);
-      data.append('cpVentilation', cpEditForm.cpVentilation.value);
+      data.append('lotReady', cpEditForm.lotReady.value);
       data.append('longDesc', cpEditForm.longDesc.value);
       this.props.mappedEditCalcPoint(data);
     }
@@ -139,11 +147,12 @@ export default class Building extends React.Component {
                 <p><b>Osoite: </b>{buildingState.building.buildingAddress}, {buildingState.building.buildingCounty}</p>
                 <p><b>Omistaja/hallinnoija: </b>{buildingState.building.buildingOwner}</p>
                 <p><b>Rakennusvuosi: </b>{buildingState.building.buildingYear}</p>
+                <p><b>Rakennustunnus: </b>{buildingState.building.buildingIdentifier}</p>
                 <p><b>Käyttötarkoitus: </b>{getLabelFor('buildingType', buildingState.building.buildingType)}</p>
-                <p><b>Runkorakenne: </b>{getLabelFor('buildingMaterial', buildingState.building.buildingMaterial)}</p>
-                <p><b>Alapohjarakenne: </b>{getLabelFor('buildingFloorBase', buildingState.building.buildingFloorBase)}</p>
+                <p><b>Perustustapa: </b>{getLabelFor('buildingFoundation', buildingState.building.buildingFoundation)}</p>
+                <p><b>Kantava runko: </b>{getLabelFor('buildingMaterial', buildingState.building.buildingMaterial)}</p>
+                <p><b>Pääasiallinen ulkoseinärakenne: </b>{getLabelFor('buildingOuterWall', buildingState.building.buildingOuterWall)}</p>
                 <p><b>Katto: </b>{getLabelFor('buildingRoof', buildingState.building.buildingRoof)}</p>
-                <p><b>Lämmitysmuoto: </b>{getLabelFor('buildingWarmingSystem', buildingState.building.buildingWarmingSystem)}</p>
                 <p><b>Kerrosluku: </b>{buildingState.building.buildingFloorsNumber}</p>
                 <p><b>Lisätiedot: </b>{buildingState.building.buildingDesc}</p>
                 <p><b>Rakennuksen ID: </b>{buildingState.building._id}</p>
@@ -153,12 +162,14 @@ export default class Building extends React.Component {
                 {/* <Button onClick={() => this.showFileUploadModal(building._id)} bsStyle="success" bsSize="xsmall"><Glyphicon glyph="plus" /> Lisää tiedosto</Button> */}
                 <table className="table vocTable">
                   <thead>
-                    <tr><th>Tiedoston kuvaus</th><th>Lataa</th></tr>
+                    <tr><th>Tiedoston kuvaus</th><th>Numerollinen kuvaus</th><th>Lataa</th></tr>
                   </thead>
                   <tbody>
                     {building.files.map((file, ix) =>
                       <tr key={ix}>
                         <td>{file.fileDesc}</td>
+                        <td>{file.fileDescNumeric}</td>
+
                         <td><a href="true" onClick={(e) => { e.preventDefault(); this.downloadFile(file._id, file.originalname) }} style={{ cursor: 'pointer' }}>{file.originalname}</a></td>
                       </tr>
                     )}
@@ -168,40 +179,46 @@ export default class Building extends React.Component {
               </div>
             </div>
             <hr />
-            <h4><b>Rakennuksen mittauspaikat:</b></h4>
+            <h4><b>Kohteen materiaalierät:</b></h4>
             {canEdit &&
-            <p>Lisää uusi mittauspaikka: <Button type="button" className="btn btn-primary" bsStyle="success" onClick={this.showAddCalcPointModal} bsSize="xsmall"><Glyphicon glyph="plus" /></Button></p>
+            <p>Lisää uusi materiaalierä: <Button type="button" className="btn btn-primary" bsStyle="success" onClick={this.showAddCalcPointModal} bsSize="xsmall"><Glyphicon glyph="plus" /></Button></p>
             }
             {buildingState.building.calcPoints &&
               <table className="table vocTable">
                 <thead>
                   <tr>
-                    <th>Tilan nimi / numero</th>
+                    <th>Erän nimi / numero</th>
+                    <th>Kasa / irrotettava</th>
+                    <th>Kappalemäärä</th>
+                    <th>Paino / Tilavuus</th>
                     <th>Kerros</th>
                     <th>Lattiamateriaali</th>
                     <th>Kattomateriaali</th>
                     <th>Seinämateriaali</th>
-                    <th>Ilmanvaihto</th>
                     <th>Lisätiedot</th>
-                    <th className="textCenter">Mittaustulokset</th>
+                    <th>Valmis myytäväksi</th>
+                    <th className="textCenter">Materiaalit</th>
                     {canEdit &&
-                      <th className="textCenter">Muokkaa mittauspaikkaa</th>
+                      <th className="textCenter">Muokkaa erää</th>
                     }
                     {canEdit &&
-                      <th className="textCenter">Poista mittauspaikka</th>
+                      <th className="textCenter">Poista erä</th>
                     }
                   </tr>
                 </thead>
                 <tbody>
                   {calcPoints.map((calcPoint, i) => <tr key={i}>
                     <td>{calcPoint.shortDesc}</td>
+                    <td>{calcPoint.lotCategory}</td>
+                    <td>{calcPoint.lotQuantity}</td>
+                    <td>{calcPoint.lotVolumeWeight} {calcPoint.lotVolumeWeightUnit}</td>
                     <td>{calcPoint.cpFloorNumber}</td>
                     <td>{getLabelFor('cpFloorMaterial', calcPoint.cpFloorMaterial)}</td>
                     <td>{getLabelFor('cpRoofMaterial', calcPoint.cpRoofMaterial)}</td>
                     <td>{getLabelFor('cpCeilingMaterial', calcPoint.cpCeilingMaterial)}</td>
-                    <td>{getLabelFor('cpVentilation', calcPoint.cpVentilation)}</td>
                     <td>{calcPoint.longDesc}</td>
-                    <td className="textCenter"><Link to={`/results/${calcPoint._id}`}>Avaa</Link> </td>
+                    <td>{calcPoint.lotReady ? 'Valmis' : 'Ei valmis'}</td>
+                    <td className="textCenter"><Link to={`/results/${calcPoint._id}`}>Avaa ({calcPoint.results.length})</Link> </td>
                     {canEdit &&
                       <td className="textCenter"><Button onClick={() => this.showCalcPointEditModal(calcPoint)} bsStyle="info" bsSize="xsmall"><Glyphicon glyph="edit" /></Button></td>
                     }
@@ -223,7 +240,7 @@ export default class Building extends React.Component {
             >
 
               <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title">Lisää uusi mittauspaikka</Modal.Title>
+                <Modal.Title id="contained-modal-title">Lisää uusi materiaalierä</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div className="col-md-12">
@@ -263,7 +280,7 @@ export default class Building extends React.Component {
             >
 
               <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title">Muokkaa mittauspaikkaa</Modal.Title>
+                <Modal.Title id="contained-modal-title">Muokkaa materiaalia</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <div className="col-md-12">
@@ -302,12 +319,12 @@ export default class Building extends React.Component {
               aria-labelledby="contained-modal-title"
             >
               <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title">Poista mittauspaikka</Modal.Title>
+                <Modal.Title id="contained-modal-title">Poista materiaali</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 {buildingState.calcPointToDelete && !buildingState.error && !buildingState.isFetching &&
                   <Alert bsStyle="warning">
-                    Oletko varma, että haluat poistaa mittauspaikan <strong>{buildingState.calcPointToDelete.shortDesc} </strong> ?
+                    Oletko varma, että haluat poistaa materiaalin <strong>{buildingState.calcPointToDelete.shortDesc} </strong> ?
               </Alert>
                 }
                 {buildingState.calcPointToDelete && buildingState.error &&
@@ -324,7 +341,7 @@ export default class Building extends React.Component {
 
                 {!buildingState.calcPointToDelete && !buildingState.error && !buildingState.isFetching &&
                   <Alert bsStyle="success">
-                    Mittauspaikka <strong>{buildingState.successMsg} </strong>
+                    Materiaali <strong>{buildingState.successMsg} </strong>
                   </Alert>
                 }
               </Modal.Body>

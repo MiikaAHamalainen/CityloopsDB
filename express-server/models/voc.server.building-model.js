@@ -4,6 +4,14 @@ mongoose.set('debug', true);
 var CalcPointSchema = mongoose.Schema({
   // tilan nimi/numero
   shortDesc: String,
+  // Kasa/irrotettava
+  lotCategory: String,
+  // Kappalemäärä
+  lotQuantity: Number,
+  // Tilavuus/paino
+  lotVolumeWeight: Number,
+  // Tilavuuden/painon yksikkö
+  lotVolumeWeightUnit: String,
   // kerros
   cpFloorNumber: Number, 
   // Lattiamateriaali
@@ -12,8 +20,9 @@ var CalcPointSchema = mongoose.Schema({
   cpRoofMaterial: String,
   // Seinämateriaali
   cpCeilingMaterial: String,
-  // ilmanvaihto
-  cpVentilation: String,
+  // Valmis myytäväksi
+  lotReady: Boolean,
+
   // lisätietoja
   longDesc: String,
   // coordinates: String,
@@ -42,16 +51,18 @@ var BuildingSchema = mongoose.Schema({
   buildingOwner: String,
   // Rakennusvuosi
   buildingYear: Number,
+  // Rakennustunnus
+  buildingIdentifier: String,
   // Käyttötarkoitus
   buildingType: String,
-  // Runkorakenne
+  // Perustustapa
+  buildingFoundation: String,
+  // Kantava runko
   buildingMaterial: String,
-  // Alapohjarakenne
-  buildingFloorBase: String,
+  // Pääasiallinen ulkoseinärakenne
+  buildingOuterWall: String,
   // Katto
   buildingRoof: String,
-  // Lämmitysmuoto
-  buildingWarmingSystem: String,
   // Kerrosluku
   buildingFloorsNumber: Number,
   // Lisätietoja
@@ -79,9 +90,7 @@ var MeasurementResultsSchema = mongoose.Schema({
   weather: String,
   //tulokset
   measurementMetrics: String,
-  // mitatut parametrit
-  usedMetrics: String,
-
+  reportResults: String,
   resultDetails: String,
   
   parentId: String,
@@ -97,7 +106,8 @@ var Result = mongoose.model('Results', MeasurementResultsSchema);
 var GFS = mongoose.model("GFS", new mongoose.Schema({
   originalname : String,
   parentId : String,
-  fileDesc : String
+  fileDesc : String,
+  fileDescNumeric : String,
 }, {strict: false}), "fs.files" );
 
 module.exports = {

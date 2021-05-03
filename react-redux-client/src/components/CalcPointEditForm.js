@@ -6,15 +6,53 @@ const CalcPointEditForm = (props) => {
   return (
     <form className="form form-horizontal" id="CalcPointEditForm" onSubmit={props.calcPointToEdit}>
       <div className="row">
-        <h3 className="centerAlign">Muokkaa rakennuksen mittauspaikkaa</h3>
+        <h3 className="centerAlign">Muokkaa materiaalia</h3>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tilan nimi / numero: </ControlLabel>
+            <ControlLabel>Erän nimi / numero: </ControlLabel>
             <input type="hidden" value={props.calcPointData._id} name="id" />
             <FormControl
-              type="text" placeholder="Tilan nimi / numero"
+              type="text" placeholder="Erän nimi / numero"
               name="shortDesc" defaultValue={props.calcPointData.shortDesc}
             />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kasa / irrotettava: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="lotCategory" defaultValue={props.calcPointData.lotCategory}>
+              {
+                getTypesFor('lotCategory')
+              };            
+            </FormControl>
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kappalemäärä: </ControlLabel>
+            <FormControl
+              type="number" placeholder="Kappalemäärä"
+              name="lotQuantity" defaultValue={props.calcPointData.lotQuantity}
+            />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Tilavus/Paino: </ControlLabel>
+            <FormControl
+              type="number" placeholder="Tilavuus/Paino"
+              name="lotVolumeWeight" defaultValue={props.calcPointData.lotVolumeWeight}
+            />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+        <FormGroup>
+            <ControlLabel>Tilavus/Paino yksikkö: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="lotVolumeWeightUnit" defaultValue={props.calcPointData.lotVolumeWeightUnit}>
+              {
+                getTypesFor('lotVolumeWeightUnit')
+              };            
+            </FormControl>
           </FormGroup>
         </div>
         <div className="col-md-12">
@@ -58,21 +96,21 @@ const CalcPointEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Ilmanvaihto: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="cpVentilation" defaultValue={props.calcPointData.cpVentilation}>
-              {
-                getTypesFor('cpVentilation')
-              };            
-            </FormControl>
-          </FormGroup>
-        </div>
-        <div className="col-md-12">
-          <FormGroup>
             <ControlLabel>Lisätiedot: </ControlLabel>
             <FormControl
               componentClass="textarea" placeholder="Syötä kuvaus"
               name="longDesc" defaultValue={props.calcPointData.longDesc}
             />
+          </FormGroup>
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+          <ControlLabel>Erä valmis myytäväksi: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="lotReady" defaultValue={props.calcPointData.lotReady}>
+              {
+                getTypesFor('lotReady')
+              };            
+            </FormControl>
           </FormGroup>
         </div>
       </div>

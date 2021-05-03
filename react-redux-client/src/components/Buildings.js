@@ -52,11 +52,12 @@ export default class Buildings extends React.Component {
       data.append('buildingCounty', editForm.buildingCounty.value);
       data.append('buildingOwner', editForm.buildingOwner.value);
       data.append('buildingYear', editForm.buildingYear.value);
+      data.append('buildingIdentifier', editForm.buildingIdentifier.value);
       data.append('buildingType', editForm.buildingType.value);
       data.append('buildingMaterial', editForm.buildingMaterial.value);
-      data.append('buildingFloorBase', editForm.buildingFloorBase.value);
+      data.append('buildingOuterWall', editForm.buildingOuterWall.value);
+      data.append('buildingFoundation', editForm.buildingFoundation.value);
       data.append('buildingRoof', editForm.buildingRoof.value);
-      data.append('buildingWarmingSystem', editForm.buildingWarmingSystem.value);
       data.append('buildingFloorsNumber', editForm.buildingFloorsNumber.value);
       data.append('buildingDesc', editForm.buildingDesc.value);
       data.append('dataOwner', editForm.dataOwner.value);
@@ -108,6 +109,7 @@ export default class Buildings extends React.Component {
     if (file !== "") {
       const data = new FormData();
       data.append('fileDesc', fileForm.fileDesc.value);
+      data.append('fileDescNumeric', fileForm.fileDescNumeric.value);
       data.append('file', file);
       data.append('filename', file.name);
       data.append('parentId', fileForm.parentId.value);
@@ -129,6 +131,7 @@ export default class Buildings extends React.Component {
     if (file !== "") {
       const data = new FormData();
       data.append('fileDesc', fileForm.fileDesc.value);
+      data.append('fileDescNumeric', fileForm.fileDescNumeric.value);
       data.append('id', fileForm.id.value);
       this.props.mappedFileEdit(data);
     }
@@ -272,7 +275,7 @@ export default class Buildings extends React.Component {
                   }
                 
                 {building.files.map((file, ix) =>
-                    <span key="ix">
+                    <span key={ix}>
                       <a href="true" onClick={(e) => { e.preventDefault(); this.downloadFile(file._id, file.originalname) }} style={{ cursor: 'pointer' }}>{file.originalname}</a><span>&nbsp;
                         {canEdit &&
                           <Button onClick={() => this.showFileEditModal(file)} bsStyle="info" bsSize="xsmall"><Glyphicon glyph="edit" /></Button>

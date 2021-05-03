@@ -7,11 +7,11 @@ const ResultEditForm = (props) => {
   return (
     <form className="form form-horizontal" id="ResultEditForm" onSubmit={props.editResult}>
       <div className="row">
-        <h3 className="centerAlign">Muokkaa mittaustulosta</h3>
+        <h3 className="centerAlign">Muokkaa materiaalia</h3>
         
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Mittauksen ajankohta: </ControlLabel>
+            <ControlLabel>Ajankohta: </ControlLabel>
             <DatePicker id="resultdate" name="resultdate" value={props.resultToEdit.resultdate} />
           </FormGroup>
         </div>
@@ -36,14 +36,12 @@ const ResultEditForm = (props) => {
           </FormGroup>
         </div>
         <div className="col-md-12">
-          <input type="hidden" value={props.resultToEdit._id} name="id" />
           <FormGroup>
-            <ControlLabel>Käytetty mittalaite: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="usedMetrics" defaultValue={props.resultToEdit.usedMetrics}>
-              {
-                getTypesFor('usedMetrics')
-              };
-            </FormControl>
+            <ControlLabel>Raportin tulokset: </ControlLabel>
+            <FormControl
+              type="text" placeholder="Raportin tulokset"
+              name="reportResults" defaultValue={props.resultToEdit.reportResults}
+            />
           </FormGroup>
         </div>
         <div className="col-md-12">

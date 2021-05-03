@@ -8,6 +8,7 @@ module.exports = (async function () {
 
 
     mongoose.connect('mongodb://localhost:27017/vocnew', {
+        useUnifiedTopology: true,
         useNewUrlParser: true
     });
 

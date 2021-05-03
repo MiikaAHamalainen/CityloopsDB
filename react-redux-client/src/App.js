@@ -10,12 +10,10 @@ import configureStore from './store/configureStore';
 
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
-
 /**
  * Main App function
  */
 class App extends Component {
-
   render() {
    return (
         <Provider store={store}>

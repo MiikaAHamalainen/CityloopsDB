@@ -55,7 +55,7 @@ export const addMeasurementResult = (req, res) => {
           return res.json({ 'success': false, 'message': 'File upload failed, could not add parent relation' });
         }
         console.log("Result added for CalcPoint: " + updatedCalcPoint._id);
-        return res.json({ 'success': true, 'message': 'Mittaustulos lisätty onnistuneesti', addedResult });
+        return res.json({ 'success': true, 'message': 'Materiaali lisätty onnistuneesti', addedResult });
       });
     })
   })

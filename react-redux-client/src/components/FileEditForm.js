@@ -17,7 +17,15 @@ const FileEditForm = (props) => {
               name="fileDesc" defaultValue={props.file.fileDesc}
             />
           </FormGroup>
-         
+        </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kuvaus (numerollinen): </ControlLabel>
+            <FormControl
+              componentClass="input" placeholder="Syötä numerollinen kuvaus"
+              name="fileDescNumeric" defaultValue={props.file.fileDescNumeric}
+            />
+          </FormGroup>
         </div>
       </div>
       <FormGroup>

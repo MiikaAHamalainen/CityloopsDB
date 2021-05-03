@@ -25,6 +25,15 @@ const FileUploadForm = (props) => {
             />
           </FormGroup>
         </div>
+        <div className="col-md-12">
+          <FormGroup>
+            <ControlLabel>Kuvaus (numerollinen): </ControlLabel>
+            <FormControl
+              componentClass="textarea" placeholder="Syötä kuvaus"
+              name="fileDescNumeric"
+            />
+          </FormGroup>
+        </div>
       </div>
       <FormGroup>
         <Button type="submit" bsStyle="success" bsSize="large" block>Lähetä</Button>
