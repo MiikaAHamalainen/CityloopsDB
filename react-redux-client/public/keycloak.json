@@ -1,8 +1,8 @@
 {
-  "realm": "VOC",
-  "auth-server-url": "http://localhost:8080/auth",
+  "realm": "CityLoopsDB",
+  "auth-server-url": "https://cityloopsdb.westeurope.cloudapp.azure.com/auth",
   "ssl-required": "external",
-  "resource": "voc-react-client",
+  "resource": "CityLoopsDB",
   "public-client": true,
   "confidential-port": 0
 }
