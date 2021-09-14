@@ -1,7 +1,7 @@
 {
   "name": "express-server",
   "version": "1.0.0",
-  "description": "VOC-express-server",
+  "description": "Cityloops-express-server",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app_hooked.js",
@@ -12,7 +12,7 @@
     "url": ""
   },
   "keywords": [
-    "voc",
+    "cityloops",
     "mern stack"
   ],
   "author": "Xamk",

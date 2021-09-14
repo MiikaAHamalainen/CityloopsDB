@@ -112,6 +112,7 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Betoni' value='Betoni'>Betoni</option>));
       items.push((<option key='Puu' value='Puu'>Puu</option>));
       items.push((<option key='Laminaatti' value='Laminaatti'>Laminaatti</option>));
+      items.push((<option key='Metalli' value='Metalli'>Metalli</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'cpRoofMaterial') {
@@ -120,6 +121,7 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Betoni' value='Betoni'>Betoni</option>));
       items.push((<option key='Levy' value='Levy'>Levy</option>));
       items.push((<option key='Puu' value='Puu'>Puu</option>));
+      items.push((<option key='Metalli' value='Metalli'>Metalli</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'cpCeilingMaterial') {
@@ -129,6 +131,8 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Hirsi' value='Hirsi'>Hirsi</option>));
       items.push((<option key='Lastulevy' value='Lastulevy'>Lastulevy</option>));
       items.push((<option key='Puu' value='Puu'>Puu</option>));
+      items.push((<option key='Villa' value='Villa'>Villa</option>));
+      items.push((<option key='Metalli' value='Metalli'>Metalli</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'measurementMetrics') {
