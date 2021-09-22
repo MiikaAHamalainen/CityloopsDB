@@ -212,8 +212,8 @@ export default class Building extends React.Component {
                     <td>{calcPoint.shortDesc}</td>
                     <td>{calcPoint.lotCategory}</td>
                     <td>{calcPoint.lotQuantity}</td>
-                    <td>{calcPoint.lotVolume} m³{/*calcPoint.lotVolumeWeightUnit */}</td>
-                    <td>{calcPoint.lotVolume} Kg{/*calcPoint.lotVolumeWeightUnit */}</td>
+                    <td>{calcPoint.lotVolume} {calcPoint.lotVolume != null ? 'm³' : ''}</td>
+                    <td>{calcPoint.lotWeight} {calcPoint.lotWeight != null ? 'Kg' : ''}</td>
                     <td>{calcPoint.cpFloorNumber}</td>
                     <td>{getLabelFor('cpFloorMaterial', calcPoint.cpFloorMaterial)}</td>
                     <td>{getLabelFor('cpRoofMaterial', calcPoint.cpRoofMaterial)}</td>
