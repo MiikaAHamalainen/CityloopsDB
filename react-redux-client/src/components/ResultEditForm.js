@@ -27,10 +27,10 @@ const ResultEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tulokset: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="measurementMetrics" defaultValue={props.resultToEdit.measurementMetrics}>
+            <ControlLabel>Hyödyntämistapa: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="reusability" defaultValue={props.resultToEdit.reusability}>
               {
-                getTypesFor('measurementMetrics')
+                getTypesFor('reusability')
               };
             </FormControl>
           </FormGroup>

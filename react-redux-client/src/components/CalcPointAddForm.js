@@ -37,21 +37,20 @@ const CalcPointAddForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tilavuus/Paino: </ControlLabel>
+            <ControlLabel>Tilavuus (m³): </ControlLabel>
             <FormControl
-              type="number" placeholder="Tilavuus/Paino"
-              name="lotVolumeWeight"
+              type="number" placeholder="Tilavuus (m³)"
+              name="lotVolume"
             />
           </FormGroup>
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tilavus/Paino yksikkö: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="lotVolumeWeightUnit">
-              {
-                getTypesFor('lotVolumeWeightUnit')
-              };            
-            </FormControl>
+            <ControlLabel>Paino (Kg): </ControlLabel>
+            <FormControl
+              type="number" placeholder="Paino (Kg)"
+              name="lotWeight"
+            />
           </FormGroup>
         </div>
         <div className="col-md-12">

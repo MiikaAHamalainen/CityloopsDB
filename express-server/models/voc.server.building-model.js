@@ -4,14 +4,14 @@ mongoose.set('debug', true);
 var CalcPointSchema = mongoose.Schema({
   // tilan nimi/numero
   shortDesc: String,
-  // Kasa/irrotettava
+  // Kasa/irrotettava/Siirtolava
   lotCategory: String,
   // Kappalemäärä
   lotQuantity: Number,
-  // Tilavuus/paino
-  lotVolumeWeight: Number,
-  // Tilavuuden/painon yksikkö
-  lotVolumeWeightUnit: String,
+  // Tilavuus
+  lotVolume: Number,
+  //Paino
+  lotWeight: Number,
   // kerros
   cpFloorNumber: Number, 
   // Lattiamateriaali
@@ -89,7 +89,7 @@ var MeasurementResultsSchema = mongoose.Schema({
   //sää
   weather: String,
   //tulokset
-  measurementMetrics: String,
+  reusability: String,
   reportResults: String,
   resultDetails: String,
   

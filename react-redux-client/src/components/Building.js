@@ -49,8 +49,8 @@ export default class Building extends React.Component {
       data.append('shortDesc', editForm.shortDesc.value);
       data.append('lotCategory', editForm.lotCategory.value);
       data.append('lotQuantity', editForm.lotQuantity.value);
-      data.append('lotVolumeWeight', editForm.lotVolumeWeight.value);
-      data.append('lotVolumeWeightUnit', editForm.lotVolumeWeightUnit.value);
+      data.append('lotVolume', editForm.lotVolume.value);
+      data.append('lotWeight', editForm.lotWeight.value);
       data.append('cpFloorNumber', editForm.cpFloorNumber.value);
       data.append('cpFloorMaterial', editForm.cpFloorMaterial.value);
       data.append('cpRoofMaterial', editForm.cpRoofMaterial.value);
@@ -83,8 +83,8 @@ export default class Building extends React.Component {
       data.append('shortDesc', cpEditForm.shortDesc.value);
       data.append('lotCategory', cpEditForm.lotCategory.value);
       data.append('lotQuantity', cpEditForm.lotQuantity.value);
-      data.append('lotVolumeWeight', cpEditForm.lotVolumeWeight.value);
-      data.append('lotVolumeWeightUnit', cpEditForm.lotVolumeWeightUnit.value);
+      data.append('lotVolume', cpEditForm.lotVolume.value);
+      data.append('lotWeight', cpEditForm.lotWeight.value);
       data.append('cpFloorNumber', cpEditForm.cpFloorNumber.value);
       data.append('cpFloorMaterial', cpEditForm.cpFloorMaterial.value);
       data.append('cpRoofMaterial', cpEditForm.cpRoofMaterial.value);
@@ -188,9 +188,10 @@ export default class Building extends React.Component {
                 <thead>
                   <tr>
                     <th>Erän nimi / numero</th>
-                    <th>Kasa / irrotettava</th>
+                    <th>Kategoria</th>
                     <th>Kappalemäärä</th>
-                    <th>Paino / Tilavuus</th>
+                    <th>Tilavuus (m³)</th>
+                    <th>Paino (Kg)</th>
                     <th>Kerros</th>
                     <th>Lattiamateriaali</th>
                     <th>Kattomateriaali</th>
@@ -211,7 +212,8 @@ export default class Building extends React.Component {
                     <td>{calcPoint.shortDesc}</td>
                     <td>{calcPoint.lotCategory}</td>
                     <td>{calcPoint.lotQuantity}</td>
-                    <td>{calcPoint.lotVolumeWeight} {calcPoint.lotVolumeWeightUnit}</td>
+                    <td>{calcPoint.lotVolume} m³{/*calcPoint.lotVolumeWeightUnit */}</td>
+                    <td>{calcPoint.lotVolume} Kg{/*calcPoint.lotVolumeWeightUnit */}</td>
                     <td>{calcPoint.cpFloorNumber}</td>
                     <td>{getLabelFor('cpFloorMaterial', calcPoint.cpFloorMaterial)}</td>
                     <td>{getLabelFor('cpRoofMaterial', calcPoint.cpRoofMaterial)}</td>

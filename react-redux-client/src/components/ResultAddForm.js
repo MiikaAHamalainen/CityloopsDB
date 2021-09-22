@@ -26,10 +26,10 @@ const ResultAddForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Menetelmä: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="measurementMetrics">
+            <ControlLabel>Hyödyntämistapa: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="reusability">
               {
-                getTypesFor('measurementMetrics')
+                getTypesFor('reusability')
               };
             </FormControl>
           </FormGroup>

@@ -152,7 +152,7 @@ export default class Results extends React.Component {
     if (addResultForm.parentId.value !== "") {
       const data = new FormData();
       data.append('parentId', addResultForm.parentId.value);
-      data.append('measurementMetrics', addResultForm.measurementMetrics.value);
+      data.append('reusability', addResultForm.reusability.value);
       data.append('weather', addResultForm.weather.value);
       data.append('resultDetails', addResultForm.resultDetails.value);
       data.append('reportResults', addResultForm.reportResults.value);
@@ -171,7 +171,7 @@ export default class Results extends React.Component {
       const data = new FormData();
       data.append('id', editForm.id.value);
       data.append('resultdate', editForm.resultdate.value);
-      data.append('measurementMetrics', editForm.measurementMetrics.value);
+      data.append('reusability', editForm.reusability.value);
       data.append('weather', editForm.weather.value);
       data.append('resultDetails', editForm.resultDetails.value);
       data.append('reportResults', editForm.reportResults.value);
@@ -241,7 +241,7 @@ export default class Results extends React.Component {
                   {results.map((result, i) => <tr key={i}>
                     <td className="textCenter">{result.resultdate && new Date(result.resultdate).toLocaleDateString('fi-FI')}</td>
                     <td>{result.weather}</td>
-                    <td>{getLabelFor('measurementMetrics', result.measurementMetrics)}</td>
+                    <td>{getLabelFor('reusability', result.reusability)}</td>
                     <td>{result.reportResults}</td>
                     <td>{result.resultDetails}</td>
 

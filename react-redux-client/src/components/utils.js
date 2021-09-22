@@ -88,7 +88,11 @@ export const getTypesFor = (paramType) => {
     }
     else if (paramType === 'lotCategory') {
       items.push((<option key='Kasa' value='Kasa'>Kasa</option>));
+      items.push((<option key='Lava' value='Lava'>Lava</option>));
+      items.push((<option key='Korkea lava' value='Korkea lava'>Korkea lava</option>));
+      items.push((<option key='Matala lava' value='Matala lava'>Matala lava</option>));
       items.push((<option key='Irrotettava' value='Irrotettava'>Irrotettava</option>));
+      items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'lotReady') {
       items.push((<option key='Ei' value={false} >Ei</option>));
@@ -135,16 +139,12 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Metalli' value='Metalli'>Metalli</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
-    else if (paramType === 'measurementMetrics') {
-      items.push((<option key='Tvoc' value='Tvoc'>TVOC</option>));
-      items.push((<option key='Mikrobit' value='Mikrobit'>Mikrobit</option>));
-      items.push((<option key='Hiukkaset' value='Hiukkaset'>Hiukkaset</option>));
-      items.push((<option key='Lampotila' value='Lampotila'>Lämpötila</option>));
-      items.push((<option key='Kosteus' value='Kosteus'>Kosteus</option>));
-      items.push((<option key='CO2' value='CO2'>CO2</option>));
-      items.push((<option key='Polynkoostumusanalyysi' value='Polynkoostumusanalyysi'>Pölynkoostumusanalyysi</option>));
-      items.push((<option key='Homekoirakokeet' value='Homekoirakokeet'>Homekoirakokeet</option>));
-      items.push((<option key='qPCRanalyysi' value='qPCRanalyysi'>qPCR-analyysi</option>));
+    else if (paramType === 'reusability') {
+      items.push((<option key='Hyödyntäminen materiaalina' value='Hyödyntäminen materiaalina'>Hyödyntäminen materiaalina</option>));
+      items.push((<option key='Hyödyntäminen energiana' value='Hyödyntäminen energiana'>Hyödyntäminen energiana</option>));
+      items.push((<option key='Maantäyttö' value='Maantäyttö'>Maantäyttö</option>));
+      items.push((<option key='Loppusijoitus tai loppukäsittely polttamalla' value='Loppusijoitus tai loppukäsittely polttamalla'>Loppusijoitus tai loppukäsittely polttamalla</option>));
+      items.push((<option key='Muu jatkokäsittely' value='Muu jatkokäsittely'>Muu jatkokäsittely</option>));
     }
 
     // Dynamic loop for accessing props
