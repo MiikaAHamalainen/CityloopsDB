@@ -225,7 +225,7 @@ export default class Results extends React.Component {
                 <thead>
                   <tr><th>Ajankohta</th>
                     <th>Säätila</th>
-                    <th>Menetelmä</th>
+                    <th>Hyödyntämistapa</th>
                     <th>Raportin tulokset</th>
                     <th>Lisätiedot</th>
                     <th className="textCenter">Tiedostot</th>

@@ -38,7 +38,7 @@ const CalcPointEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Tilavus: </ControlLabel>
+            <ControlLabel>Tilavuus (m³): </ControlLabel>
             <FormControl
               type="number" placeholder="Tilavuus"
               name="lotVolume" defaultValue={props.calcPointData.lotVolume}
@@ -47,7 +47,7 @@ const CalcPointEditForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Paino: </ControlLabel>
+            <ControlLabel>Paino (Kg): </ControlLabel>
             <FormControl
               type="number" placeholder="Paino"
               name="lotWeight" defaultValue={props.calcPointData.lotWeight}

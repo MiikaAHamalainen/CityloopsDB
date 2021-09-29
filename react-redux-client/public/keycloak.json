@@ -1,6 +1,6 @@
 {
   "realm": "CityLoopsDB",
-  "auth-server-url": "https://cityloopsdb.westeurope.cloudapp.azure.com/auth",
+  "auth-server-url": "http://127.0.0.1:8080/auth",
   "ssl-required": "external",
   "resource": "CityLoopsDB",
   "public-client": true,

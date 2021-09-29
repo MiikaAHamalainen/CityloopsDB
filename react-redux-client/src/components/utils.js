@@ -140,11 +140,12 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
     else if (paramType === 'reusability') {
+      items.push((<option key='Valmistelu uudelleenkäyttöön' value='Valmistelu uudelleenkäyttöön'>Valmistelu uudelleenkäyttöön</option>));
       items.push((<option key='Hyödyntäminen materiaalina' value='Hyödyntäminen materiaalina'>Hyödyntäminen materiaalina</option>));
       items.push((<option key='Hyödyntäminen energiana' value='Hyödyntäminen energiana'>Hyödyntäminen energiana</option>));
       items.push((<option key='Maantäyttö' value='Maantäyttö'>Maantäyttö</option>));
-      items.push((<option key='Loppusijoitus tai loppukäsittely polttamalla' value='Loppusijoitus tai loppukäsittely polttamalla'>Loppusijoitus tai loppukäsittely polttamalla</option>));
-      items.push((<option key='Muu jatkokäsittely' value='Muu jatkokäsittely'>Muu jatkokäsittely</option>));
+      items.push((<option key='Hyödyntäminen kaatopaikalla' value='Hyödyntäminen kaatopaikalla'>Hyödyntäminen kaatopaikalla</option>));
+      items.push((<option key='Loppusijoitus tai käsittely polttamalla' value='Loppusijoitus tai käsittely polttamalla'>Loppusijoitus tai käsittely polttamalla</option>));
     }
 
     // Dynamic loop for accessing props
