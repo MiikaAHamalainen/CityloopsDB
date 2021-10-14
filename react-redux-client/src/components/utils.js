@@ -58,10 +58,6 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Kivi' value='Kivi'>Kivi</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
     }
-    else if ( paramType === 'lotVolumeWeightUnit' ) {
-      items.push((<option key='Kg' value='Kg'>Kg</option>));
-      items.push((<option key='m³' value='m³'>m³</option>));
-    }
     else if ( paramType === 'buildingFoundation' ) {
       items.push((<option key='Betoni' value='Betoni'>Betoni</option>));
       items.push((<option key='Tiili' value='Tiili'>Tiili</option>));
@@ -138,6 +134,27 @@ export const getTypesFor = (paramType) => {
       items.push((<option key='Villa' value='Villa'>Villa</option>));
       items.push((<option key='Metalli' value='Metalli'>Metalli</option>));
       items.push((<option key='Muu' value='Muu'>Muu</option>));
+    }
+    else if (paramType === 'cdwCategory') {
+      items.push((<option key='Rakennusjäte' value='Rakennusjäte'>Rakennusjäte</option>));
+      items.push((<option key='Kipsilevy' value='Kipsilevy'>Kipsilevy</option>));
+      items.push((<option key='Asbesti' value='Asbesti'>Asbesti</option>));
+      items.push((<option key='Betoni ja tiili' value='Betoni ja tiili'>Betoni ja tiili</option>));
+      items.push((<option key='Betoni ja tiili lievästi pilaantunut' value='Betoni ja tiili lievästi pilaantunut'>Betoni ja tiili lievästi pilaantunut</option>));
+      items.push((<option key='Betoni ja tiili pilaantunut' value='Betoni ja tiili pilaantunut'>Betoni ja tiili pilaantunut</option>));
+      items.push((<option key='Lasi' value='Lasi'>Lasi</option>));
+      items.push((<option key='Puu' value='Puu'>Puu</option>));
+      items.push((<option key='Kestopuu' value='Kestopuu'>Kestopuu</option>));
+      items.push((<option key='Eristevilla' value='Eristevilla'>Eristevilla</option>));
+      items.push((<option key='Kattohuopa' value='Kattohuopa'>Kattohuopa</option>));
+      items.push((<option key='Asfaltti' value='Asfaltti'>Asfaltti</option>));
+      items.push((<option key='Metalli' value='Metalli'>Metalli</option>));
+      items.push((<option key='SER' value='SER'>SER</option>));
+      items.push((<option key='Energiajäte' value='Energiajäte'>Energiajäte</option>));
+      items.push((<option key='Maa-aines / maahan sekoittuneet ainekset' value='Maa-aines / maahan sekoittuneet ainekset'>Maa-aines / maahan sekoittuneet ainekset</option>));
+      items.push((<option key='Pilaantuneet maat' value='Pilaantuneet maat'>Pilaantuneet maat</option>));
+      items.push((<option key='Muu' value='Muu'>Muu</option>));
+
     }
     else if (paramType === 'reusability') {
       items.push((<option key='Valmistelu uudelleenkäyttöön' value='Valmistelu uudelleenkäyttöön'>Valmistelu uudelleenkäyttöön</option>));

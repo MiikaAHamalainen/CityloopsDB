@@ -86,8 +86,8 @@ var MeasurementResultsSchema = mongoose.Schema({
   },
   // mittauspvm
   resultdate: Date,
-  //sää
-  weather: String,
+  //jäteluokitus
+  cdwCategory: String,
   //tulokset
   reusability: String,
   reportResults: String,

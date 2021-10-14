@@ -17,11 +17,12 @@ const ResultAddForm = (props) => {
         </div>
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Säätila: </ControlLabel>
-            <FormControl
-              type="text" placeholder="Säätila"
-              name="weather"
-            />
+            <ControlLabel>Jäteluokitus: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="reusability">
+              {
+                getTypesFor('cdwCategory')
+              };
+            </FormControl>
           </FormGroup>
         </div>
         <div className="col-md-12">

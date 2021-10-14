@@ -191,7 +191,7 @@ export default class Building extends React.Component {
                     <th>Kategoria</th>
                     <th>Kappalemäärä</th>
                     <th>Tilavuus (m³)</th>
-                    <th>Paino (Kg)</th>
+                    <th>Paino (t)</th>
                     <th>Kerros</th>
                     <th>Lattiamateriaali</th>
                     <th>Kattomateriaali</th>

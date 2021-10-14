@@ -18,13 +18,15 @@ const ResultEditForm = (props) => {
 
         <div className="col-md-12">
           <FormGroup>
-            <ControlLabel>Säätila: </ControlLabel>
-            <FormControl
-              type="text" placeholder="Säätila"
-              name="weather" defaultValue={props.resultToEdit.weather}
-            />
+            <ControlLabel>Jäteluokitus: </ControlLabel>
+            <FormControl componentClass="select" placeholder="Valitse" name="cdwCategory" defaultValue={props.resultToEdit.reusability}>
+              {
+                getTypesFor('cdwCategory')
+              };
+            </FormControl>
           </FormGroup>
         </div>
+
         <div className="col-md-12">
           <FormGroup>
             <ControlLabel>Hyödyntämistapa: </ControlLabel>

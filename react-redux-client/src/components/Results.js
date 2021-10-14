@@ -153,7 +153,7 @@ export default class Results extends React.Component {
       const data = new FormData();
       data.append('parentId', addResultForm.parentId.value);
       data.append('reusability', addResultForm.reusability.value);
-      data.append('weather', addResultForm.weather.value);
+      data.append('cdwCategory', addResultForm.cdwCategory.value);
       data.append('resultDetails', addResultForm.resultDetails.value);
       data.append('reportResults', addResultForm.reportResults.value);
       data.append('resultdate', addResultForm.resultdate.value);
@@ -172,7 +172,7 @@ export default class Results extends React.Component {
       data.append('id', editForm.id.value);
       data.append('resultdate', editForm.resultdate.value);
       data.append('reusability', editForm.reusability.value);
-      data.append('weather', editForm.weather.value);
+      data.append('cdwCategory', editForm.cdwCategory.value);
       data.append('resultDetails', editForm.resultDetails.value);
       data.append('reportResults', editForm.reportResults.value);
       this.props.mappedEditResult(data);
@@ -224,7 +224,7 @@ export default class Results extends React.Component {
               <table className="table vocTable">
                 <thead>
                   <tr><th>Ajankohta</th>
-                    <th>Säätila</th>
+                    <th>Jäteluokitus</th>
                     <th>Hyödyntämistapa</th>
                     <th>Raportin tulokset</th>
                     <th>Lisätiedot</th>
@@ -240,7 +240,7 @@ export default class Results extends React.Component {
                 <tbody>
                   {results.map((result, i) => <tr key={i}>
                     <td className="textCenter">{result.resultdate && new Date(result.resultdate).toLocaleDateString('fi-FI')}</td>
-                    <td>{result.weather}</td>
+                    <td>{result.cdwCategory}</td>
                     <td>{getLabelFor('reusability', result.reusability)}</td>
                     <td>{result.reportResults}</td>
                     <td>{result.resultDetails}</td>
