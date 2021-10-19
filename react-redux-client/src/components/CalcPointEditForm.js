@@ -49,7 +49,7 @@ const CalcPointEditForm = (props) => {
           <FormGroup>
             <ControlLabel>Paino (t): </ControlLabel>
             <FormControl
-              type="number" placeholder="Paino"
+              type="number" step="any" placeholder="Paino (t)"
               name="lotWeight" defaultValue={props.calcPointData.lotWeight}
             />
           </FormGroup>
