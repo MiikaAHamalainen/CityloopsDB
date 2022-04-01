@@ -152,11 +152,11 @@ export default class Results extends React.Component {
     if (addResultForm.parentId.value !== "") {
       const data = new FormData();
       data.append('parentId', addResultForm.parentId.value);
+      data.append('resultdate', addResultForm.resultdate.value);
       data.append('reusability', addResultForm.reusability.value);
       data.append('cdwCategory', addResultForm.cdwCategory.value);
       data.append('resultDetails', addResultForm.resultDetails.value);
       data.append('reportResults', addResultForm.reportResults.value);
-      data.append('resultdate', addResultForm.resultdate.value);
       this.props.mappedAddResultForCalcPoint(data);
     }
     else {
@@ -210,7 +210,7 @@ export default class Results extends React.Component {
              {buildingState.building &&
               <Link to ={`/${buildingState.building._id}`}>Takaisin rakennuksen tietoihin</Link>
              }
-            <h4>Materiaalerän <b>{buildingState.calcPoint.shortDesc}</b> materiaalit:</h4>
+            <h4>Materiaalierän <b>{buildingState.calcPoint.shortDesc}</b> materiaalit:</h4>
             <hr />
             <p><Button type="button" className="btn btn-primary" bsStyle="success" onClick={this.showAddResultModal} bsSize="small"><Glyphicon glyph="plus" />Lisää uusi materiaali</Button></p>
 

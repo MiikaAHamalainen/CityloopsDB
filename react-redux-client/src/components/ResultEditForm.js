@@ -19,7 +19,7 @@ const ResultEditForm = (props) => {
         <div className="col-md-12">
           <FormGroup>
             <ControlLabel>Jäteluokitus: </ControlLabel>
-            <FormControl componentClass="select" placeholder="Valitse" name="cdwCategory" defaultValue={props.resultToEdit.reusability}>
+            <FormControl componentClass="select" placeholder="Valitse" name="cdwCategory" defaultValue={props.resultToEdit.cdwCategory}>
               {
                 getTypesFor('cdwCategory')
               };
